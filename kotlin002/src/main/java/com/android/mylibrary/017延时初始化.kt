@@ -5,8 +5,8 @@ package com.android.mylibrary
 
 
 延时初始化
-使用lateinit关键字相当于一个约定，在用它之前负责初始化
-只要无法确认lateinit变量是否完成初始化，可以执行isInitialized检查
+使用 lateinit 关键字相当于一个约定，在用它之前负责初始化
+只要无法确认 lateinit 变量是否完成初始化，可以执行 isInitialized 检查
 
 
 

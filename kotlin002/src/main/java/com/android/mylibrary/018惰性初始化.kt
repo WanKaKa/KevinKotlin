@@ -14,8 +14,9 @@ package com.android.mylibrary
 class Player5(_name: String) {
     var name = _name
 
-    //    val config by lazy { loadConfig() }
-    val config = loadConfig()
+    val config by lazy { loadConfig() }
+
+    //        val config = loadConfig()
     private fun loadConfig(): String {
         println("Loading")
         return "xxx"
@@ -33,9 +34,9 @@ open class Player6(_name: String) {
 }
 
 fun main() {
-//    val player5 = Player5("Jack")
-//    Thread.sleep(3000)
-//    println(player5.config)
+    val player5 = Player5("Jack")
+    Thread.sleep(3000)
+    println(player5.config)
 
-    println(Player6("Jack").playerName)
+//    println(Player6("Jack").playerName)
 }
