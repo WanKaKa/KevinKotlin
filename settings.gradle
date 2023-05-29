@@ -1,3 +1,2 @@
-include ':kotlin002'
 include ':app'
 rootProject.name = "KevinKotlin"
