@@ -19,10 +19,12 @@ also函数和let函数功能相似，和let一样，also也是把接收者作为
 
 fun main() {
     val fileContents: List<String>
-    File("C:\\Users\\wankai\\Desktop\\崩坏星穹.txt").also {
-        println(it.name)
-    }.also {
-        fileContents = it.readLines()
-    }
+    File("C:\\Users\\wankai\\Desktop\\崩坏星穹.txt")
+        .also {
+            println(it.name)
+        }
+        .also {
+            fileContents = it.readLines()
+        }
     println(fileContents)
 }

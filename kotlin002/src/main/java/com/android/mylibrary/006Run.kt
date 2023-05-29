@@ -8,7 +8,7 @@ fun main() {
         readText().contains("克拉拉")
         "The people's Republic of China"
     }
-    println(result)
+//    println(result)
 
 //    val result2 = "The people's Republic of China".run(::isLong)
 //    println(result2)
@@ -16,10 +16,12 @@ fun main() {
 
 //    isLong("The people's Republic of China")
 
-    val result3 = "The people's Republic of China".run(::isLong).run(::showMessage2).run {
+    val result3 = "The people's Republic of China".run {
+        isLong(this)
+    }.run(::showMessage2).run {
         println(this("WanKai"))
     }
-//    println(result3)
+    println(result3)
 }
 
 //fun isLong(name: String):Boolean {
@@ -30,7 +32,9 @@ fun main() {
 //    name.length >= 10
 //}
 
-fun isLong(name: String) = name.length >= 10
+fun isLong(name: String): Boolean {
+    return name.length >= 10
+}
 
 fun showMessage(isLong: Boolean): String {
     return if (isLong) "Name is too long" else "Please rename"
@@ -38,6 +42,6 @@ fun showMessage(isLong: Boolean): String {
 
 fun showMessage2(isLong: Boolean): (String) -> String {
     return {
-        "$it 我也知道我在写啥"
+        "$it " + (if (isLong) "字符大于等于10个" else "字符小于10个")
     }
 }
