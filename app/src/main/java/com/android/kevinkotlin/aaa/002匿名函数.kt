@@ -30,6 +30,7 @@ fun main() {
     //     val holiday = "New Year."
     //     "Happy $holiday"
     // }
+    // println(blessingFunction())
 
 
     // val blessingFunction: (String) -> String = { name ->

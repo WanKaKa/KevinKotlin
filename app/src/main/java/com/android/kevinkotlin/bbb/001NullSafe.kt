@@ -1,7 +1,5 @@
 package com.android.kevinkotlin.bbb
 
-import java.util.*
-
 
 /*
 
@@ -50,37 +48,37 @@ fun main() {
     /**
      * ?代表可以为空
      */
-//    var str: String? = "butterfly"
-////    str = null
-//    println(str?.capitalize())
+    // var str: String? = "butterfly"
+    // str = null
+    // println(str?.capitalize())
 
 
-//    var str: String? = "butterfly"
-////    str = ""
-//    str = str?.let {
-//        if (it.isNotBlank()) {
-//            it.capitalize(Locale.ROOT)
-//        }else{
-//            "butterfly"
-//        }
-//    }
-//    println(str)
+    // var str: String? = "butterfly"
+    // str = ""
+    // str = str?.let {
+    //     if (it.isNotBlank()) {
+    //         it.capitalize(Locale.ROOT)
+    //     } else {
+    //         "butterfly"
+    //     }
+    // }
+    // println(str)
 
 
-//    var str: String? = "butterfly"
-////    str = null
-//    println(str!!.capitalize())
+    // var str: String? = "butterfly"
+    // str = null
+    // println(str!!.capitalize())
 
 
-//    var str: String? = "butterfly"
-////    str = null
-//    str?.capitalize().plus("Great")
+    // var str: String? = "butterfly"
+    // str = null
+    // str?.capitalize().plus("Great")
 
 
-    var str: String? = "butterfly"
-    str = null
-//    str = str ?: "A"
-    println(str?.capitalize(Locale.ROOT))
+    // var str: String? = "butterfly"
+    // str = null
+    // str = str ?: "A"
+    // println(str?.capitalize(Locale.ROOT))
 }
 
 

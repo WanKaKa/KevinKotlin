@@ -22,4 +22,5 @@ fun main() {
         setWritable(true)
         setExecutable(false)
     }
+    println(file2)
 }

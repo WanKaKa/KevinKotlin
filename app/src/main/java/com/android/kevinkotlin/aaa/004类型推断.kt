@@ -8,12 +8,12 @@ package com.android.kevinkotlin.aaa
 
  */
 fun main() {
-//    val blessingFunction = {
-//        val holiday = "Ney Year."
-//        " Happy $holiday"
-//    }
-//
-//    println(blessingFunction())
+    // val blessingFunction = {
+    //     val holiday = "Ney Year."
+    //     " Happy $holiday"
+    // }
+    //
+    // println(blessingFunction())
 
 
     val blessingFunction = { name: String, year: Int ->
