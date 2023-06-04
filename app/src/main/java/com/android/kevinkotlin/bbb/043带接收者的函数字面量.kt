@@ -33,6 +33,11 @@ T.() -> Unit
  File.() -> Unit
 
 
+ DSL
+ 使用这样的编程范式，就可以写出业界知名的“领域特定语言”（DSL），一种API编程范式，暴露接收者的函数和特性
+ 以便使用你定义的lambda表达式来读取和配置它们
+
+
  */
 
 
@@ -40,16 +45,20 @@ fun main() {
     // File("").apply {
     //     setReadable(true)
     // }
-    //
+
+
     // val fileExtend: File.() -> Unit = {
     //     setReadable(true)
     // }
     // File("").apply(fileExtend)
 
+
     // 步骤分解，方便理解
     fun File.kevin() {
         setReadable(true)
     }
+
+    File("").apply(File::kevin)
 
     File("").apply {
         setReadable(true)
