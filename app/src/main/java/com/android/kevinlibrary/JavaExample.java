@@ -4,6 +4,9 @@ import com.android.kevinkotlin.ccc.Hero;
 
 import java.io.IOException;
 
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
+
 public class JavaExample {
 
     public static void main(String[] args) {
@@ -32,6 +35,9 @@ public class JavaExample {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        Function1<String, Unit> function1 = SpellBookKt.getTranslator();
+        function1.invoke("TRUCE");
     }
 
     private int mHitPoints = 123;

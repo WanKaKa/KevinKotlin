@@ -1,6 +1,7 @@
 package com.android.kevinlibrary
 
 import java.io.IOException
+import java.util.*
 
 class SpellBook {
 
@@ -14,6 +15,10 @@ class SpellBook {
         @JvmStatic
         fun getSpellBookGreeting() = println("I am the great gregoire")
     }
+}
+
+val translator = { utterance: String ->
+    println(utterance.toLowerCase(Locale.ROOT).capitalize(Locale.ROOT))
 }
 
 @JvmOverloads

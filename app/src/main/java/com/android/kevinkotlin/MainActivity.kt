@@ -1,7 +1,10 @@
 package com.android.kevinkotlin
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -9,5 +12,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         println("HelloWord")
+
+        findViewById<TextView>(R.id.title).setOnClickListener {
+            Log.d("WanKaiLLog", "Ha")
+            Toast.makeText(this, "YuKi HaHaHa", Toast.LENGTH_SHORT).show()
+        }
     }
 }
