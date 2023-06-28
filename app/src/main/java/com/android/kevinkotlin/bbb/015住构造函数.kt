@@ -19,6 +19,7 @@ import kotlin.math.absoluteValue
 
 
 open class Player2(_name: String, _age: Int, _isNormal: Boolean) {
+
     private val name = _name
         get() = field.capitalize(Locale.ROOT)
     private val age = _age

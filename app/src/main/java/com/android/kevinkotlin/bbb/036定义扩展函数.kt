@@ -16,7 +16,9 @@ package com.android.kevinkotlin.bbb
 
 
 // 给字符串追加若干个感叹号
-fun String.addExt(amount: Int = 1) = this + "!".repeat(amount)
+fun String.addExt(amount: Int = 1): String {
+    return this + "!".repeat(amount)
+}
 
 fun String.easyPrint(): String {
     println(this)
@@ -25,5 +27,5 @@ fun String.easyPrint(): String {
 
 fun main() {
     println("abc".addExt(2))
-    "abc".easyPrint().addExt(3)
+    // "abc".easyPrint().addExt(3)
 }
