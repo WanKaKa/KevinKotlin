@@ -1,2 +1,5 @@
+include ':modulesPublic:modulePay'
+include ':modulesBase:libBase'
+include ':modulesCore:main'
 include ':app'
 rootProject.name = "KevinKotlin"

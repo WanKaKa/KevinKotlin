@@ -1,22 +1,30 @@
-plugins {
-    id 'com.android.application'
-    id 'kotlin-android'
-}
-
 def cfg = rootProject.ext
+
+if (cfg.isDebug) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
 
 android {
     compileSdkVersion cfg.android.compileSdkVersion
     buildToolsVersion cfg.android.buildToolsVersion
 
     defaultConfig {
-        applicationId cfg.applicationId.app
+        if (cfg.isDebug) {
+            applicationId cfg.applicationId.main
+        }
         minSdkVersion cfg.android.minSdkVersion
         targetSdkVersion cfg.android.targetSdkVersion
         versionCode cfg.android.versionCode
         versionName cfg.android.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+            }
+        }
     }
 
     buildTypes {
@@ -29,13 +37,21 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    kotlinOptions {
-        jvmTarget = '1.8'
+
+    sourceSets {
+        main {
+            if (cfg.isDebug) {
+                manifest.srcFile 'src/main/debug/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            }
+        }
     }
 }
 
 dependencies {
     implementation project(':modulesBase:libBase')
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.2.0'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }

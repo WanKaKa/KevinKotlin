@@ -1,16 +1,12 @@
-plugins {
-    id 'com.android.application'
-    id 'kotlin-android'
-}
-
 def cfg = rootProject.ext
+
+apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion cfg.android.compileSdkVersion
     buildToolsVersion cfg.android.buildToolsVersion
 
     defaultConfig {
-        applicationId cfg.applicationId.app
         minSdkVersion cfg.android.minSdkVersion
         targetSdkVersion cfg.android.targetSdkVersion
         versionCode cfg.android.versionCode
@@ -29,13 +25,15 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
 }
 
 dependencies {
-    implementation project(':modulesBase:libBase')
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.2.0'
+
+    api cfg.library.appcompat
+    api cfg.library.material
+    api cfg.library.constraintlayout
+
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
