@@ -14,7 +14,7 @@ package com.android.kevinkotlin.bbb
 
 
 
-mutator函数
+mutator 函数
 1. 能修改可变列表的函数有个统一的名字：mutator函数
 2. 添加元素的运算符和删除元素的运算符
 3. 基于lambda表达式指定的条件删除元素

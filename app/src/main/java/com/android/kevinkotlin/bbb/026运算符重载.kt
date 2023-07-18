@@ -3,6 +3,8 @@ package com.android.kevinkotlin.bbb
 
 /*
 
+重载的修饰符是 operator
+
 + plus 把一个对象添加到另一个对象里
 
 += plusAssign 把一个对象添加到另一个对象里，然后将结果赋值给第一个对象

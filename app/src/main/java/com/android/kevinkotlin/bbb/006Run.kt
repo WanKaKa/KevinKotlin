@@ -15,6 +15,7 @@ fun main() {
     // isLong("The people's Republic of China")
 
     val result3 = "The people's Republic of China"
+        // ::表示把一个方法当做一个参数，传递到另一个方法中进行使用。即引用一个方法
         .run(::isLong)
         // .run { showMessage2(this) }
         // .run(::showMessage2)
