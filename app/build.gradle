@@ -38,4 +38,16 @@ dependencies {
     implementation project(':modulesBase:libBase')
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.2.0'
+
+    implementation 'com.squareup.okhttp3:okhttp:4.9.3'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+    implementation 'com.google.code.gson:gson:2.9.0'
+    implementation 'com.lzy.net:okgo:3.0.4'
+
+    implementation 'com.ijoysoft.base:libfileoperation-x:2.2.5'//文件操作库
+    implementation 'com.ijoysoft.language:libmultilanguage:2.0.0'//多语言切换
+    implementation 'com.ijoysoft.base:libutils-x:3.9.3'//工具库
+    implementation 'com.ijoysoft.base:libdownloader:2.3.0'//下载库
 }

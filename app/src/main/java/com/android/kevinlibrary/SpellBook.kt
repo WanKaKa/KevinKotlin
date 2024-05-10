@@ -8,7 +8,6 @@ class SpellBook {
     @JvmField
     val spells = listOf("Magic Ms.L", "Lay on Hans")
 
-
     companion object {
         const val MAX_SPELL_COUNT = 10
 

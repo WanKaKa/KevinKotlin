@@ -13,7 +13,6 @@ package com.android.kevinkotlin.aaa
  */
 
 
-
 /*
 fun main() {
     val getDiscountWords = { goodsName: String, hour: Int ->
