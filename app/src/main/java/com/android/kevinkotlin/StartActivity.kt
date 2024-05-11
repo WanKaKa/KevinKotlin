@@ -7,8 +7,11 @@ import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.ijoysoft.event.AppBus
 import com.ijoysoft.file.util.ScopeFileUtil
 import com.lb.library.ActivityLifecycle
+import com.lb.library.MainHandler
+import com.squareup.otto.Subscribe
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.FormBody
@@ -24,11 +27,16 @@ import java.io.IOException
 class StartActivity : AppCompatActivity() {
 
     private var mOkHttpClient: OkHttpClient? = null
+    private var mSpeed: TextView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         ActivityLifecycle.get().initialize(application)
+        AppBus.get().register(this)
+
+        mSpeed = findViewById(R.id.speed)
 
         println("HelloWord")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
@@ -168,12 +176,25 @@ class StartActivity : AppCompatActivity() {
          */
 
         findViewById<TextView>(R.id.run_task).setOnClickListener {
-            OkHttpUnitTest.interceptorTest()
+//            OkHttpUnitTest.interceptorTest()
 //            OkHttpUnitTest.cacheTest()
 //            OkHttpUnitTest.cookieTest()
 //            RetrofitUnitTest.test2()
-//            DownloadTest.downloadTest1()
+            DownloadTest.downloadTest1()
 //            DownloadTest.downloadTest2()
+//            DownloadTest.downloadTest3()
         }
+    }
+
+    @Subscribe
+    fun onEvent(event: SpeedEvent) {
+        MainHandler.get().post {
+            mSpeed?.text = event.speed
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        AppBus.get().unregister(this)
     }
 }

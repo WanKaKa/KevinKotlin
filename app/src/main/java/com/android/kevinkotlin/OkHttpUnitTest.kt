@@ -67,7 +67,7 @@ class OkHttpUnitTest {
             val okHttpClient = OkHttpClient.Builder()
                 .cache(
                     Cache(
-                        File(ActivityLifecycle.get().application.filesDir.path + "/OkHttpCache"),
+                        File(ActivityLifecycle.get().application.filesDir.absolutePath + "/OkHttpCache"),
                         10L * 1024L * 1024L
                     )
                 )

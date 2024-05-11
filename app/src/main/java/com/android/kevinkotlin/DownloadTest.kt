@@ -6,12 +6,17 @@ import com.ijoysoft.download.Downloader
 import com.ijoysoft.download.IPathGenerator
 import com.ijoysoft.download.IUrlGenerator
 import com.ijoysoft.download.SingleDownloadRequest
+import com.ijoysoft.event.AppBus
 import com.lb.library.ActivityLifecycle
 import com.lb.library.executor.ExecutorFactory
+import com.lzy.okgo.OkGo
+import com.lzy.okgo.callback.FileCallback
+import com.lzy.okgo.model.Progress
 import okhttp3.ResponseBody
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.create
+import java.io.File
 import java.io.FileOutputStream
 
 /**
@@ -24,7 +29,8 @@ class DownloadTest {
 
         private const val QQ_SPEED_URL =
             "https://gp-open-platform.cdn.bcebos.com/204404250955/d13fe74bb209e4ccc04ef9b7a0cedcb7/gp-open-platform/upload/file/apk/e11410eae2d13a5d1140f2f439089683.apk"
-        private var SAVE = ActivityLifecycle.get().application.filesDir.path + "/QQSpeed.apk"
+        private var SAVE =
+            ActivityLifecycle.get().application.filesDir.absolutePath + "/QQSpeed.apk"
 
         private var preSize: Long = 0
         private var preMillis: Long = System.currentTimeMillis()
@@ -61,7 +67,9 @@ class DownloadTest {
                             val speed = String.format("%.2f", size / time)
                             val progress = String.format("%.2f", currentSize * 100.0 / totalSize)
 
-                            Log.d("wankailog", speed + "M/S" + " 进度 = " + progress + "%")
+                            val speedString = "$speed M/S\n进度 = $progress%"
+                            Log.d("wankailog", speedString)
+                            AppBus.get().post(SpeedEvent(speedString))
 
                             preSize = currentSize
                             preMillis = millis
@@ -72,9 +80,29 @@ class DownloadTest {
             Downloader.load(request)
         }
 
+        fun downloadTest2() {
+            OkGo.get<File>(QQ_SPEED_URL).execute(object : FileCallback("QQSpeed.apk") {
+                override fun onSuccess(response: com.lzy.okgo.model.Response<File>?) {
+                }
+
+                override fun onError(response: com.lzy.okgo.model.Response<File>?) {
+                    super.onError(response)
+                    Log.d("wankailog", response?.exception?.toString() ?: "")
+                }
+
+                override fun downloadProgress(progress: Progress?) {
+                    super.downloadProgress(progress)
+                    val speedString = String.format(
+                        "%.2f", progress?.speed?.let { it / 1024f / 1024f }) + " M/S"
+                    Log.d("wankailog", speedString)
+                    AppBus.get().post(SpeedEvent(speedString))
+                }
+            })
+        }
+
         private var addTotalSize = 0
 
-        fun downloadTest2() {
+        fun downloadTest3() {
             ExecutorFactory.net().execute {
                 preMillis = System.currentTimeMillis()
                 val retrofit = Retrofit.Builder().baseUrl("http://www.httpbin.org/").build()
@@ -93,7 +121,8 @@ class DownloadTest {
                         val size = addTotalSize / 1024.0 / 1024.0
                         val speed = String.format("%.2f", size / time)
 
-                        Log.d("wankailog", speed + "M/S")
+                        Log.d("wankailog", "$speed M/S")
+                        AppBus.get().post(SpeedEvent("$speed M/S"))
 
                         addTotalSize = 0
                         preMillis = millis

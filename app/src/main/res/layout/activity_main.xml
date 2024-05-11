@@ -52,4 +52,13 @@
         android:gravity="center"
         android:text="执行任务" />
 
+    <TextView
+        android:id="@+id/speed"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="36sp" />
+
 </LinearLayout>
