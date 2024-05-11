@@ -161,13 +161,19 @@ class StartActivity : AppCompatActivity() {
             })
         }
 
+        /**
+         * [OkHttpUnitTest]
+         * [RetrofitUnitTest] [HttpbinService] [WanandroidService]
+         * [DownloadTest] [UpLoadService]
+         */
+
         findViewById<TextView>(R.id.run_task).setOnClickListener {
-//            InterceptorUnitTest.interceptorTest()
+            OkHttpUnitTest.interceptorTest()
 //            OkHttpUnitTest.cacheTest()
 //            OkHttpUnitTest.cookieTest()
 //            RetrofitUnitTest.test2()
 //            DownloadTest.downloadTest1()
-            DownloadTest.downloadTest2()
+//            DownloadTest.downloadTest2()
         }
     }
 }

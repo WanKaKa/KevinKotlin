@@ -93,7 +93,7 @@ class DownloadTest {
                         val size = addTotalSize / 1024.0 / 1024.0
                         val speed = String.format("%.2f", size / time)
 
-                        Log.d("wankailog", speed)
+                        Log.d("wankailog", speed + "M/S")
 
                         addTotalSize = 0
                         preMillis = millis

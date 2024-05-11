@@ -136,7 +136,6 @@ class OkHttpUnitTest {
                             override fun onResponse(call: Call, response: Response) {
                                 Log.d("wankailog", response.body?.string() ?: "结果为空")
                             }
-
                         })
                     }
                 }
