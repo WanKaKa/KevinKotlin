@@ -165,8 +165,9 @@ class StartActivity : AppCompatActivity() {
 //            InterceptorUnitTest.interceptorTest()
 //            OkHttpUnitTest.cacheTest()
 //            OkHttpUnitTest.cookieTest()
-//            DownloadTest.downloaderTest()
-            RetrofitUnitTest.test2()
+//            RetrofitUnitTest.test2()
+//            DownloadTest.downloadTest1()
+            DownloadTest.downloadTest2()
         }
     }
 }
